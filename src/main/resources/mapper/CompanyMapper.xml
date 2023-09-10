@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.dao.CompanyDao">
+
+
+    <select id="getAllCompanies" resultType="com.example.demo.pojo.Company">
+        SELECT * FROM company  ORDER BY orgEstDate desc
+    </select>
+
+    <select id="byPage" parameterType="com.example.demo.pojo.query.CompanyQuery" resultType="com.example.demo.pojo.Company">
+
+    </select>
+</mapper>
