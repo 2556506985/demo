@@ -2,6 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.demo.dao.CompanyDao">
+    <insert id="addCompany" parameterType="com.example.demo.pojo.Company">
+        INSERT INTO company(orgUniCode,orgChiName,induSmaPar,orgDele,regCap,orgEstDate) VALUES(#{orgUniCode},#{orgChiName},#{induSmaPar},#{orgDele},#{regCap},#{orgEstDate})
+    </insert>
+    <update id="updateCompany" parameterType="com.example.demo.pojo.Company">
+        UPDATE company SET orgUniCode=#{orgUniCode},orgChiName=#{orgChiName},induSmaPar=#{induSmaPar},orgDele=#{orgDele},regCap=#{regCap},orgEstDate=#{orgEstDate} WHERE orgUniCode=#{orgUniCode}
+    </update>
+    <delete id="deleteCompany" parameterType="integer">
+        DELETE FROM company WHERE orgUniCode=#{id}
+    </delete>
 
 
     <select id="getAllCompanies" resultType="com.example.demo.pojo.Company">
@@ -10,5 +19,8 @@
 
     <select id="byPage" parameterType="com.example.demo.pojo.query.CompanyQuery" resultType="com.example.demo.pojo.Company">
 
+    </select>
+    <select id="getById" parameterType="integer" resultType="com.example.demo.pojo.Company">
+        SELECT * FROM company WHERE  orgUniCode=#{id}
     </select>
 </mapper>
